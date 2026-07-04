@@ -35,4 +35,8 @@ print("\nPlanning Output:\n")
 
 from pprint import pprint
 
+print("\n========== Planning ==========\n")
 pprint(result["planning_output"])
+
+print("\n========== Technical ==========\n")
+pprint(result["technical_output"])

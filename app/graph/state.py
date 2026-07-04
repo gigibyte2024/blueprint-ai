@@ -18,9 +18,7 @@ class BlueprintState(TypedDict):
     planning_output: dict
 
     # Technical Phase
-    database_schema: str
-    api_specification: str
-    tech_stack: str
+    technical_output: dict
 
     # UI Phase
     ui_prompt: str
