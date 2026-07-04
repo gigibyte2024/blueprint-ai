@@ -40,3 +40,6 @@ pprint(result["planning_output"])
 
 print("\n========== Technical ==========\n")
 pprint(result["technical_output"])
+
+print("\n========== UI ==========\n")
+pprint(result["ui_output"])

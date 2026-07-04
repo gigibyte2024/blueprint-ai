@@ -21,7 +21,7 @@ class BlueprintState(TypedDict):
     technical_output: dict
 
     # UI Phase
-    ui_prompt: str
+    ui_output: dict
 
     # Planning
     roadmap: str
