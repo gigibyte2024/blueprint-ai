@@ -7,7 +7,13 @@ state = {
     "idea": "Blueprint AI converts startup ideas into complete product blueprints.",
 
     "clarification_questions": [],
-    "clarification_answers": [],
+    "clarification_answers": [
+    "Startup founders",
+    "Yes",
+    "Web platform",
+    "Editable blueprint",
+    "Yes"
+],
 
     "prd": "",
     "user_stories": "",
@@ -25,7 +31,8 @@ state = {
 
 result = workflow.invoke(state)
 
-print("\nQuestions:\n")
+print("\nPlanning Output:\n")
 
-for q in result["clarification_questions"]:
-    print("-", q)
+from pprint import pprint
+
+pprint(result["planning_output"])

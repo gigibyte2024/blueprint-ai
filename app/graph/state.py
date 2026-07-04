@@ -15,9 +15,7 @@ class BlueprintState(TypedDict):
     clarification_answers: List[str]
 
     # Planning Phase
-    prd: str
-    user_stories: str
-    feature_list: str
+    planning_output: dict
 
     # Technical Phase
     database_schema: str
