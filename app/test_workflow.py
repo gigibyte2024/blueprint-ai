@@ -43,3 +43,9 @@ pprint(result["technical_output"])
 
 print("\n========== UI ==========\n")
 pprint(result["ui_output"])
+
+print("\n========== FINAL BLUEPRINT ==========\n")
+
+from pprint import pprint
+
+pprint(result["final_blueprint"])

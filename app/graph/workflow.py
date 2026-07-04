@@ -6,6 +6,7 @@ from app.agents.clarification_agent import ClarificationAgent
 from app.agents.planning_agent import PlanningAgent
 from app.agents.technical_agent import TechnicalAgent
 from app.agents.ui_agent import UIAgent
+from app.agents.composer_agent import ComposerAgent
 
 builder = StateGraph(BlueprintState)
 planning = PlanningAgent()
@@ -18,6 +19,7 @@ builder.add_node("clarification", clarification.execute)
 builder.set_entry_point("orchestrator")
 technical = TechnicalAgent()
 ui = UIAgent()
+composer = ComposerAgent()
 
 def route(state: BlueprintState):
 
@@ -54,6 +56,11 @@ builder.add_edge(
 
 builder.add_edge(
     "ui",
+    "composer",
+)
+
+builder.add_edge(
+    "composer",
     END,
 )
 builder.add_node(
@@ -64,6 +71,11 @@ builder.add_node(
 builder.add_node(
     "ui",
     ui.execute,
+)
+
+builder.add_node(
+    "composer",
+    composer.execute,
 )
 
 workflow = builder.compile()
