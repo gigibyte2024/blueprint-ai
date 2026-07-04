@@ -1,7 +1,7 @@
 from app.agents.clarification_agent import clarification_agent
 
 state = {
-    "idea": "Blueprint AI is an AI product planning workspace that converts startup ideas into complete product blueprints.",
+    "idea": "Blueprint AI is an AI platform that converts startup ideas into complete product blueprints.",
 
     "clarification_questions": [],
     "clarification_answers": [],
@@ -24,5 +24,5 @@ result = clarification_agent(state)
 
 print("\nGenerated Questions:\n")
 
-for question in result["clarification_questions"]:
-    print(question)
+for q in result["clarification_questions"]:
+    print(q)

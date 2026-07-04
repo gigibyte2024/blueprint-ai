@@ -1,12 +1,11 @@
+import json
+
 from app.graph.state import BlueprintState
 from app.services.llm_service import generate_response
 from app.utils.prompt_loader import load_prompt
 
 
 def clarification_agent(state: BlueprintState) -> BlueprintState:
-    """
-    Reads the user's idea and generates clarification questions.
-    """
 
     prompt_template = load_prompt("clarification.txt")
 
@@ -14,14 +13,21 @@ def clarification_agent(state: BlueprintState) -> BlueprintState:
         idea=state["idea"]
     )
 
-    response = generate_response(prompt)
-
-    questions = [
-        line.strip()
-        for line in response.split("\n")
-        if line.strip()
+    messages = [
+        {
+            "role": "system",
+            "content": "You are a Senior Product Manager."
+        },
+        {
+            "role": "user",
+            "content": prompt
+        }
     ]
 
-    state["clarification_questions"] = questions
+    response = generate_response(messages)
+
+    data = json.loads(response)
+
+    state["clarification_questions"] = data["questions"]
 
     return state

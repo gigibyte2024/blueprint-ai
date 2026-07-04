@@ -12,7 +12,7 @@ Return ONLY valid JSON.
 
 Example:
 
-{
+{{
   "questions": [
     "...",
     "...",
@@ -20,5 +20,7 @@ Example:
     "...",
     "..."
   ]
-}
-- Return only a numbered list.
+}}
+
+Do not add explanations.
+Return only valid JSON.
