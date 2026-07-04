@@ -1,33 +1,23 @@
 import json
 
+from app.agents.base_agent import BaseAgent
 from app.graph.state import BlueprintState
-from app.services.llm_service import generate_response
-from app.utils.prompt_loader import load_prompt
 
 
-def clarification_agent(state: BlueprintState) -> BlueprintState:
+class ClarificationAgent(BaseAgent):
 
-    prompt_template = load_prompt("clarification.txt")
+    def __init__(self):
+        super().__init__("clarification.txt")
 
-    prompt = prompt_template.format(
-        idea=state["idea"]
-    )
+    def parse(self, response):
+        return json.loads(response)
 
-    messages = [
-        {
-            "role": "system",
-            "content": "You are a Senior Product Manager."
-        },
-        {
-            "role": "user",
-            "content": prompt
-        }
-    ]
+    def execute(self, state: BlueprintState):
 
-    response = generate_response(messages)
+        result = self.run(
+            idea=state["idea"]
+        )
 
-    data = json.loads(response)
+        state["clarification_questions"] = result["questions"]
 
-    state["clarification_questions"] = data["questions"]
-
-    return state
+        return state
