@@ -5,7 +5,8 @@ class BlueprintState(TypedDict):
     """
     Shared state passed between all agents.
     """
-
+    current_step: str
+    is_clarification_complete: bool
     # User Input
     idea: str
 

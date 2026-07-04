@@ -1,6 +1,9 @@
 from app.graph.workflow import workflow
 
 state = {
+    "current_step": "",
+
+    "is_clarification_complete": False,
     "idea": "Blueprint AI converts startup ideas into complete product blueprints.",
 
     "clarification_questions": [],
